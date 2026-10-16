@@ -19,7 +19,7 @@ jobs:
           cache: true
       - run: dart tool/setup.dart
       - run: flutter analyze --no-fatal-infos --no-fatal-warnings
-      - run: flutter test
+      - run: flutter test --reporter github
       - run: flutter build apk --release --dart-define=API_BASE=https://jumlapp.com/api
       - uses: actions/upload-artifact@v4
         with:
