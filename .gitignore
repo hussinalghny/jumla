@@ -1,0 +1,13 @@
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+.DS_Store
+/android/local.properties
+/android/key.properties
+/android/app/*.jks
+/ios/Pods/
+/ios/Flutter/Generated.xcconfig
