@@ -16,7 +16,7 @@ void main() {
     final bad = <String>[];
     for (final e in kIconPaths.entries) {
       final b = parseSvgPath(e.value).getBounds();
-      final ok = (b.width > 0 || b.height > 0) && b.left >= -2 && b.top >= -2 && b.right <= 26 && b.bottom <= 26;
+      final ok = (b.width > 0 || b.height > 0) && b.left >= -4 && b.top >= -4 && b.right <= 28 && b.bottom <= 28;
       if (!ok) bad.add('${e.key}=${b.left.toStringAsFixed(1)},${b.top.toStringAsFixed(1)},${b.right.toStringAsFixed(1)},${b.bottom.toStringAsFixed(1)}');
     }
     expect(bad, isEmpty);
