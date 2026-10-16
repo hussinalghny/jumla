@@ -13,12 +13,13 @@ void main() {
   });
 
   test('كل الأيقونات تتحلل بشكل صحيح', () {
+    final bad = <String>[];
     for (final e in kIconPaths.entries) {
       final b = parseSvgPath(e.value).getBounds();
-      // الخط الأفقي (مثل ناقص) ارتفاعه صفر، فنتحقق من وجود أي امتداد
-      expect(b.width > 0 || b.height > 0, isTrue, reason: e.key);
-      expect(b.left >= -2 && b.top >= -2 && b.right <= 26 && b.bottom <= 26, isTrue, reason: '${e.key}: $b');
+      final ok = (b.width > 0 || b.height > 0) && b.left >= -2 && b.top >= -2 && b.right <= 26 && b.bottom <= 26;
+      if (!ok) bad.add('${e.key}=${b.left.toStringAsFixed(1)},${b.top.toStringAsFixed(1)},${b.right.toStringAsFixed(1)},${b.bottom.toStringAsFixed(1)}');
     }
+    expect(bad, isEmpty);
   });
 
   test('قراءة المنتج من الـ API', () {
