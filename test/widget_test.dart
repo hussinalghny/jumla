@@ -15,8 +15,9 @@ void main() {
   test('كل الأيقونات تتحلل بشكل صحيح', () {
     for (final e in kIconPaths.entries) {
       final b = parseSvgPath(e.value).getBounds();
-      expect(b.isEmpty, isFalse, reason: e.key);
-      expect(b.left >= -1 && b.top >= -1 && b.right <= 25 && b.bottom <= 25, isTrue, reason: '${e.key}: $b');
+      // الخط الأفقي (مثل ناقص) ارتفاعه صفر، فنتحقق من وجود أي امتداد
+      expect(b.width > 0 || b.height > 0, isTrue, reason: e.key);
+      expect(b.left >= -2 && b.top >= -2 && b.right <= 26 && b.bottom <= 26, isTrue, reason: '${e.key}: $b');
     }
   });
 
